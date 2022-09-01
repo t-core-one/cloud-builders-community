@@ -10,6 +10,9 @@ RUN /usr/bin/unzip packer_${PACKER_VERSION}_linux_amd64.zip
 
 
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-RUN apt-get -y update && apt-get -y install ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get -y update \
+    && apt-get -y install ca-certificates openssh-client python3-pip libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip3 install ansible psycopg2
 COPY --from=build packer /usr/bin/packer
 ENTRYPOINT ["/usr/bin/packer"]
