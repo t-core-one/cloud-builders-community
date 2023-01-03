@@ -1,4 +1,5 @@
 {
+    "python.defaultInterpreterPath": "~/projects/teamcore/.venv/bin/python3",
     "cSpell.words": [
         "cloudbuild",
         "gcloud"
